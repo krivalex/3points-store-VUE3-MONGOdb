@@ -1,7 +1,9 @@
 <template>
   <div class="content-main">
-    <img src="../assets/head.png" alt="logo">
-    <h1 class="heading">Калькулятор размера обуви</h1>
+    <div class="img-beaty">
+      <img src="../assets/head.png" alt="logo">
+      <h1 class="heading">Калькулятор размера обуви</h1>
+    </div>
     <div class="input-group">
 
       <div class="height">
@@ -228,9 +230,13 @@ export default {
   cursor: pointer;
 }
 
+.img-beaty {
+  position: relative;
+}
+
 .heading {
   position: absolute;
-  top: 230px;
+  top: 90px;
 }
 
 .button {

@@ -21,7 +21,7 @@
     <div class="radios">
 
       <div class="gender">
-        <h2 for="man">Ваш пол?</h2>
+        <h2 for="man">Пол: </h2>
         <form>
           <input :value="man" @input="inputMan" class="radio-button" type="radio" name="gender">
           <label for="man">Мужской</label>
@@ -109,6 +109,12 @@ export default {
   background-color: #f5f5f5;
 }
 
+.content-main h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -144,14 +150,14 @@ export default {
   width: 100%;
 }
 
-.input {
-  width: 100%;
-  height: 30px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+
+.input:focus {
+  border: 4px solid rgb(255, 149, 2);
+}
+
+.input label {
+  font-size: 25px;
+
 }
 
 .radios {
@@ -160,5 +166,51 @@ export default {
   justify-content: center;
   width: 50vw;
   margin: 20px;
+}
+
+.gender {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.gender h2 {
+  margin-right: 10px;
+}
+
+.gender form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gender form label {
+  margin-right: 15px;
+  font-size: 25px;
+}
+
+.gender form input {
+  margin: 5px;
+  margin-left: 10px;
+  transform: scale(2.0);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.ortopedic {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ortopedic input {
+  margin-left: 20px;
+  margin-top: 5px;
+  transform: scale(2.0);
+  opacity: 0.9;
+  cursor: pointer;
 }
 </style>

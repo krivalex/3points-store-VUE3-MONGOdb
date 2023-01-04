@@ -2,7 +2,6 @@
   <div class="content-main">
     <div class="img-beaty">
       <img src="../assets/head.png" alt="logo">
-      <h1 class="heading">Калькулятор размера обуви</h1>
     </div>
     <div class="input-group">
 

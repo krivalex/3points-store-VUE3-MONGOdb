@@ -17,7 +17,7 @@ export default {
 <style>
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0 20px;
   background-color: #f5f5f5;
@@ -61,14 +61,6 @@ export default {
     0 0 151px #bc13fe;
 }
 
-body {
-  font-size: 18px;
-  font-family: "Sacramento", sans-serif;
-  background-color: #010a01;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 h1,
 h2 {

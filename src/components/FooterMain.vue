@@ -29,7 +29,7 @@ export default {
 
 .data {
   display: flex;
-  justify-content: space-b;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   height: 100%;

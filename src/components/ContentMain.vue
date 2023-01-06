@@ -48,7 +48,7 @@
       <button class="button" type="submit" @click="calculate">Рассчитать</button>
     </div>
 
-    <div v-if="this.ru_result > 0" class="result">
+    <div v-if="this.ru_result > 0" class="result" id="result">
       <h2>Ваш размер обуви: <strong>{{ this.ru_result }}</strong></h2>
       <ul>
         <li>По американской системе: {{ this.usa_result }}</li>
@@ -57,15 +57,20 @@
 
       </ul>
     </div>
-    <div v-else-if="this.man === false && this.woman === false" class="result">
-      <h2>Укажите ваш пол 👨/👩</h2>
+    <div v-else-if="this.height === 0" class="result">
+      <h2>Укажите ваш рост📏</h2>
     </div>
     <div v-else-if="isNaN(this.foot) || this.foot === 0" class="result">
       <h2>Укажите размер вашей ноги🦶</h2>
     </div>
-    <div v-else-if="this.height === 0" class="result">
-      <h2>Укажите ваш рост📏</h2>
+    <div v-else-if="this.man === false && this.woman === false" class="result">
+      <h2>Укажите ваш пол 👨/👩</h2>
     </div>
+    <div v-else-if="this.ru_result === undefined" class="result">
+      <h2>Похоже, что вы не вписываетесь в стандартные размеры обуви 🤔</h2>
+    </div>
+
+
 
   </div>
 </template>
@@ -96,27 +101,40 @@ export default {
       ru_result: 0,
       eu_result: 0,
       usa_result: 0,
+      update: false
     }
   },
   name: 'ContentMain',
   methods: {
     calculate() {
-      this.foot = parseFloat(this.foot.replace(",", "."))
+      let foot = this.foot
+      if (typeof this.foot === "string") {
+        foot = this.foot.replace(",", ".")
+      }
 
       if (this.woman) {
-        let foot_value = this.foot < 0 ? foot_size_sm_woman.filter(cur => cur <= this.foot)[0] : foot_size_sm_woman.filter(cur => cur >= this.foot)[0];
+        let foot_value = foot < 0 ? foot_size_sm_woman.filter(cur => cur <= foot)[0] : foot_size_sm_woman.filter(cur => cur >= foot)[0];
         console.log(foot_value)
         this.ru_result = foot_size_RU_woman[foot_size_sm_woman.indexOf(foot_value)]
         this.eu_result = foot_size_EU_woman[foot_size_sm_woman.indexOf(foot_value)]
         this.usa_result = foot_size_USA_woman[foot_size_sm_woman.indexOf(foot_value)]
+        this.foot = foot
+        if (this.ortopedic) {
+          this.ru_result += 0.5
+          this.usa_result += 0.5
+        }
       }
       if (this.man) {
-        let foot_value = this.foot < 0 ? foot_size_sm_man.filter(cur => cur <= this.foot)[0] : foot_size_sm_man.filter(cur => cur >= this.foot)[0];
+        let foot_value = foot < 0 ? foot_size_sm_man.filter(cur => cur <= foot)[0] : foot_size_sm_man.filter(cur => cur >= foot)[0];
         console.log(foot_value)
         this.ru_result = foot_size_RU_man[foot_size_sm_man.indexOf(foot_value)]
         this.eu_result = foot_size_EU_man[foot_size_sm_man.indexOf(foot_value)]
         this.usa_result = foot_size_USA_man[foot_size_sm_man.indexOf(foot_value)]
-        console.log(this.ru_result)
+        this.foot = foot
+        if (this.ortopedic) {
+          this.ru_result += 0.5
+          this.usa_result += 0.5
+        }
       }
 
 
@@ -164,7 +182,17 @@ export default {
 .result strong {
   color: #ff0000;
   font-size: 40px;
+}
 
+#result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 40px;
 }
 
 .content-main {
@@ -172,7 +200,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   background-color: #f5f5f5;
 }

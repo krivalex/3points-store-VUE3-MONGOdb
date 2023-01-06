@@ -1,8 +1,14 @@
 <template>
   <div class="footer-main">
-    <a href="https://www.instagram.com/footsizecalculator/" target="_blank" class="footer-main__link">
+    <a href="https://instagram.com/3points_kz?igshid=OGQ2MjdiOTE=" target="_blank" class="footer-main__link">
       <img src="../assets/insta.png.webp" alt="instagram" class="footer-main__link-img">
     </a>
+    <div class="copyrights">
+      <p>© 2023 3points</p>
+    </div>
+    <div class="creator">
+      <p>@_krivalex_</p>
+    </div>
 
   </div>
 </template>
@@ -16,7 +22,7 @@ export default {
 <style>
 .footer-main {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0 20px;
   background-color: #f5f5f5;
@@ -28,8 +34,29 @@ export default {
   background-position: center;
 }
 
+.data {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
 .footer-main img {
   width: 100px;
   height: 100px;
+}
+
+.copyrights {
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+}
+
+.creator {
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 </style>

@@ -48,16 +48,33 @@
       <button class="button" type="submit" @click="calculate">Рассчитать</button>
     </div>
 
-    <div v-if="this.result > 0" class="result">
-      <h2>Ваш размер обуви: {{ this.result }}</h2>
+    <div v-if="this.ru_result > 0" class="result">
+      <h2>Ваш размер обуви: <strong>{{ this.ru_result }}</strong></h2>
+      <ul>
+        <li>По американской системе: {{ this.usa_result }}</li>
+        <li>По европейской системе: {{ this.eu_result }}</li>
+        <li>По российской системе: {{ this.ru_result }}</li>
+
+      </ul>
     </div>
 
   </div>
 </template>
 <script>
 
-const foot_size_sm = [21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32]
-const foot_size_index = [33, 34, 34, 35, 36, 37, 37, 38, 39, 40, 40, 41, 42, 43, 44, 44, 45, 46, 46, 47, 47, 48, 48]
+
+const foot_size_sm_woman = [22.8, 23.1, 23.5, 23.8, 24.1, 24.5, 24.8, 25.1, 25.4, 25.7, 26.0, 26.7, 27.6]
+const foot_size_sm_man = [24.1, 24.4, 24.8, 25.4, 25.7, 26, 26.7, 27.0, 27.3, 27.9, 28.3, 28.6, 29, 29.4, 30]
+
+const foot_size_USA_woman = [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11]
+const foot_size_USA_man = [6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5]
+
+const foot_size_RU_woman = [35, 35.5, 35 - 36, 36, 36.5, 37, 37.5, 38, 38.5, 39, 39.5, 40, 40.5, 41, 41.5]
+const foot_size_RU_man = [37.5, 38, 39, 39.5, 40, 41, 41.5, 42, 43, 43.5, 44, 44.5, 45, 46, 47]
+
+const foot_size_EU_woman = [35, 35.5, "36(3)", 37, "37.5(4.5)", 38, "38.5(5.5)", "39(6)", "40(6.5)", "40.5(7)", "41(7.5)", "42(8.5)", 42.2]
+const foot_size_EU_man = [38.5, 39, 40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45, 46, 46.5, 47, 48]
+
 
 export default {
   data() {
@@ -67,16 +84,35 @@ export default {
       man: false,
       woman: false,
       ortopedic: false,
-      result: 0
-
+      ru_result: 0,
+      eu_result: 0,
+      usa_result: 0,
     }
   },
   name: 'ContentMain',
   methods: {
     calculate() {
       let foot = parseFloat(this.foot.replace(",", "."))
-      let foot_value = foot < 0 ? foot_size_sm.filter(cur => cur <= foot)[0] : foot_size_sm.filter(cur => cur >= foot)[0];
-      this.result = foot_size_index[foot_size_sm.indexOf(foot_value)]
+      console.log(foot)
+
+      if (this.woman) {
+        let foot_value = foot < 0 ? foot_size_sm_woman.filter(cur => cur <= foot)[0] : foot_size_sm_woman.filter(cur => cur >= foot)[0];
+        console.log(foot_value)
+        this.ru_result = foot_size_RU_woman[foot_size_sm_woman.indexOf(foot_value)]
+        this.eu_result = foot_size_EU_woman[foot_size_sm_woman.indexOf(foot_value)]
+        this.usa_result = foot_size_USA_woman[foot_size_sm_woman.indexOf(foot_value)]
+      }
+      if (this.man) {
+        let foot_value = foot < 0 ? foot_size_sm_man.filter(cur => cur <= foot)[0] : foot_size_sm_man.filter(cur => cur >= foot)[0];
+        console.log(foot_value)
+        this.ru_result = foot_size_RU_man[foot_size_sm_man.indexOf(foot_value)]
+        this.eu_result = foot_size_EU_man[foot_size_sm_man.indexOf(foot_value)]
+        this.usa_result = foot_size_USA_man[foot_size_sm_man.indexOf(foot_value)]
+        console.log(this.ru_result)
+      }
+
+
+
 
     },
     inputHeight(event) {
@@ -105,6 +141,22 @@ export default {
 </script>
 
 <style>
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.result strong {
+  color: #ff0000;
+  font-size: 40px;
+
+}
+
 .content-main {
   display: flex;
   flex-direction: column;
@@ -208,7 +260,8 @@ export default {
 
 .gender form input {
   margin: 5px;
-  margin-left: 10px;
+  margin-left: 15px;
+  margin-right: 7px;
   transform: scale(2.0);
   opacity: 0.9;
   cursor: pointer;

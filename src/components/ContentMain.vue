@@ -74,7 +74,7 @@ export default {
   name: 'ContentMain',
   methods: {
     calculate() {
-      let foot = parseFloat(this.foot)
+      let foot = parseFloat(this.foot.replace(",", "."))
       let foot_value = foot < 0 ? foot_size_sm.filter(cur => cur <= foot)[0] : foot_size_sm.filter(cur => cur >= foot)[0];
       this.result = foot_size_index[foot_size_sm.indexOf(foot_value)]
 

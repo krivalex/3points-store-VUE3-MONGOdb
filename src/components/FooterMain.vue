@@ -3,13 +3,6 @@
     <a href="https://instagram.com/3points_kz?igshid=OGQ2MjdiOTE=" target="_blank" class="footer-main__link">
       <img src="../assets/insta.png.webp" alt="instagram" class="footer-main__link-img">
     </a>
-    <div class="copyrights">
-      <p>© 2023 3points</p>
-    </div>
-    <div class="creator">
-      <p>@_krivalex_</p>
-    </div>
-
   </div>
 </template>
 <script>
@@ -36,7 +29,7 @@ export default {
 
 .data {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-b;
   flex-direction: column;
   align-items: center;
   height: 100%;

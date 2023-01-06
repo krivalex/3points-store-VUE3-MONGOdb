@@ -6,14 +6,14 @@
     <div class="input-group">
 
       <div class="height">
-        <form>
+        <form @submit.prevent>
           <label for="height">Введите свой рост</label>
           <input :value="height" @input="inputHeight" class="input" type="text" placeholder="Ваш рост">
         </form>
       </div>
 
       <div class="leg">
-        <form>
+        <form @submit.prevent>
           <label for="leg">Введите длину ноги</label>
           <input :value="foot" @input="inputFoot" class="input" type="text" placeholder="Длина ноги в сантиметрах">
         </form>
@@ -57,6 +57,15 @@
 
       </ul>
     </div>
+    <div v-else-if="this.man === false && this.woman === false" class="result">
+      <h2>Укажите ваш пол 👨/👩</h2>
+    </div>
+    <div v-else-if="isNaN(this.foot) || this.foot === 0" class="result">
+      <h2>Укажите размер вашей ноги🦶</h2>
+    </div>
+    <div v-else-if="this.height === 0" class="result">
+      <h2>Укажите ваш рост📏</h2>
+    </div>
 
   </div>
 </template>
@@ -79,8 +88,8 @@ const foot_size_EU_man = [38.5, 39, 40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45, 46
 export default {
   data() {
     return {
-      height: "",
-      foot: "",
+      height: 0,
+      foot: 0,
       man: false,
       woman: false,
       ortopedic: false,
@@ -92,24 +101,24 @@ export default {
   name: 'ContentMain',
   methods: {
     calculate() {
-      let foot = parseFloat(this.foot.replace(",", "."))
-      console.log(foot)
+      this.foot = parseFloat(this.foot.replace(",", "."))
 
       if (this.woman) {
-        let foot_value = foot < 0 ? foot_size_sm_woman.filter(cur => cur <= foot)[0] : foot_size_sm_woman.filter(cur => cur >= foot)[0];
+        let foot_value = this.foot < 0 ? foot_size_sm_woman.filter(cur => cur <= this.foot)[0] : foot_size_sm_woman.filter(cur => cur >= this.foot)[0];
         console.log(foot_value)
         this.ru_result = foot_size_RU_woman[foot_size_sm_woman.indexOf(foot_value)]
         this.eu_result = foot_size_EU_woman[foot_size_sm_woman.indexOf(foot_value)]
         this.usa_result = foot_size_USA_woman[foot_size_sm_woman.indexOf(foot_value)]
       }
       if (this.man) {
-        let foot_value = foot < 0 ? foot_size_sm_man.filter(cur => cur <= foot)[0] : foot_size_sm_man.filter(cur => cur >= foot)[0];
+        let foot_value = this.foot < 0 ? foot_size_sm_man.filter(cur => cur <= this.foot)[0] : foot_size_sm_man.filter(cur => cur >= this.foot)[0];
         console.log(foot_value)
         this.ru_result = foot_size_RU_man[foot_size_sm_man.indexOf(foot_value)]
         this.eu_result = foot_size_EU_man[foot_size_sm_man.indexOf(foot_value)]
         this.usa_result = foot_size_USA_man[foot_size_sm_man.indexOf(foot_value)]
         console.log(this.ru_result)
       }
+
 
 
 
@@ -149,6 +158,7 @@ export default {
   width: 100%;
   font-size: 20px;
   margin-top: 15px;
+  margin-bottom: 40px;
 }
 
 .result strong {
@@ -186,11 +196,13 @@ export default {
   width: 100%;
   height: 30px;
   border: 4px solid #ccc;
+  border-color: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
   border-radius: 4px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
+
 
 .height {
   display: flex;
@@ -219,7 +231,9 @@ export default {
 }
 
 .input:focus {
-  border: 4px solid rgb(255, 149, 2);
+  border-color: #0460ac;
+  box-shadow: 0 0 10px #0b80e0;
+  transition: box-shadow linear 1s
 }
 
 .input label {

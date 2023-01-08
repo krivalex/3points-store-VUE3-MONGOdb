@@ -1,7 +1,7 @@
 <template>
   <div class="one-card">
     <div class="card-image">
-      <img :src="image" alt="image">
+      <img crossorigin="anonymous" :src="require(`@/assets/photos/${id}.jpg`)" alt="image">
     </div>
     <div class="card-info">
       <h2>{{ name }}</h2>

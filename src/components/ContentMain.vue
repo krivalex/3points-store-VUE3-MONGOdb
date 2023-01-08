@@ -116,7 +116,7 @@ export default {
     }
   },
   name: 'ContentMain',
-  components: ManyCard,
+  components: { ManyCard },
   methods: {
     calculate() {
       let foot = this.foot
@@ -212,8 +212,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 120vh;
-  width: 100vw;
   background-color: #f5f5f5;
 }
 

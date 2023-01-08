@@ -13,7 +13,7 @@ import snickers_data from './data'
 
 export default {
   name: 'ManyCard',
-  components: OneCard,
+  components: { OneCard },
   data() {
     return {
       cards: snickers_data
@@ -24,5 +24,19 @@ export default {
 </script>
 
 <style>
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+}
 
+.cards .one-card {
+  width: 30%;
+  height: 300px;
+  margin: 10px 0;
+}
 </style>

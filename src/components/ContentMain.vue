@@ -49,13 +49,20 @@
     </div>
 
     <div v-if="this.ru_result > 0" class="result" id="result">
+
       <h2>Ваш размер обуви: <strong>{{ this.ru_result }}</strong></h2>
       <ul>
         <li>По американской системе: {{ this.usa_result }}</li>
         <li>По европейской системе: {{ this.eu_result }}</li>
         <li>По российской системе: {{ this.ru_result }}</li>
-
       </ul>
+
+
+      <div class="many-cards">
+        <ManyCard />
+      </div>
+
+
     </div>
     <div v-else-if="this.height === 0" class="result">
       <h2>Укажите ваш рост📏</h2>
@@ -72,9 +79,13 @@
 
 
 
+
+
   </div>
 </template>
 <script>
+import ManyCard from './ManyCard.vue'
+
 
 
 const foot_size_sm_woman = [22.8, 23.1, 23.5, 23.8, 24.1, 24.5, 24.8, 25.1, 25.4, 25.7, 26.0, 26.7, 27.6]
@@ -105,6 +116,7 @@ export default {
     }
   },
   name: 'ContentMain',
+  components: ManyCard,
   methods: {
     calculate() {
       let foot = this.foot

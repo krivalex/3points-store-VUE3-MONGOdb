@@ -38,6 +38,34 @@
         <input :value="ortopedic" @input="inputOrtopedic" class="radio-button" type="checkbox" name="ortopedic">
       </div>
 
+
+
+    </div>
+
+    <div class="color">
+      <h2 for="color-choice">Какие цвета?</h2>
+      <div class="color-choice">
+        <div class="one-color">
+          <label id="red">Красный</label>
+          <input :value="colors" @input="inputRED" class="radio-button" type="checkbox" name="red">
+        </div>
+        <div class="one-color">
+          <label id="black">Черный</label>
+          <input :value="colors" @input="inputBLACK" class="radio-button" type="checkbox" name="black">
+        </div>
+        <div class="one-color">
+          <label id="white">Белый</label>
+          <input :value="colors" @input="inputWHITE" class="radio-button" type="checkbox" name="white">
+        </div>
+        <div class="one-color">
+          <label id="grey">Серый</label>
+          <input :value="colors" @input="inputGREY" class="radio-button" type="checkbox" name="grey">
+        </div>
+        <div class="one-color">
+          <label id="green">Зеленый</label>
+          <input :value="colors" @input="inputGREEN" class="radio-button" type="checkbox" name="green">
+        </div>
+      </div>
     </div>
 
     <div class="calc-button">
@@ -64,10 +92,10 @@
 
 
     </div>
-    <div v-else-if="this.height === 0" class="result">
+    <div v-else-if='this.height === ""' class="result">
       <h2>Укажите ваш рост📏</h2>
     </div>
-    <div v-else-if="isNaN(this.foot) || this.foot === 0" class="result">
+    <div v-else-if='isNaN(this.foot) || this.foot === ""' class="result">
       <h2>Укажите размер вашей ноги🦶</h2>
     </div>
     <div v-else-if="this.man === false && this.woman === false" class="result">
@@ -104,15 +132,15 @@ const foot_size_EU_man = [38.5, 39, 40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45, 46
 export default {
   data() {
     return {
-      height: 0,
-      foot: 0,
+      height: "",
+      foot: "",
       man: false,
       woman: false,
       ortopedic: false,
       ru_result: 0,
       eu_result: 0,
       usa_result: 0,
-      update: false
+      colors: []
     }
   },
   name: 'ContentMain',
@@ -174,7 +202,42 @@ export default {
       } else {
         this.ortopedic = true
       }
-    }
+    },
+    inputRED() {
+      if (this.colors.includes("red")) {
+        this.colors = this.colors.filter(cur => cur !== "red")
+      } else {
+        this.colors.push("red")
+      }
+    },
+    inputBLACK() {
+      if (this.colors.includes("black")) {
+        this.colors = this.colors.filter(cur => cur !== "black")
+      } else {
+        this.colors.push("black")
+      }
+    },
+    inputWHITE() {
+      if (this.colors.includes("white")) {
+        this.colors = this.colors.filter(cur => cur !== "white")
+      } else {
+        this.colors.push("white")
+      }
+    },
+    inputGREY() {
+      if (this.colors.includes("grey")) {
+        this.colors = this.colors.filter(cur => cur !== "grey")
+      } else {
+        this.colors.push("grey")
+      }
+    },
+    inputGREEN() {
+      if (this.colors.includes("green")) {
+        this.colors = this.colors.filter(cur => cur !== "green")
+      } else {
+        this.colors.push("green")
+      }
+    },
   }
 }
 </script>
@@ -423,5 +486,74 @@ button:focus::after {
     height: 120px;
     opacity: 0;
   }
+}
+
+.color {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.color h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.color input {
+  margin: 5px;
+  margin-left: 15px;
+  margin-right: 7px;
+  transform: scale(2.0);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.color label {
+  font-size: 20px;
+  text-align: center;
+}
+
+#red {
+  -webkit-text-stroke-color: red;
+  -webkit-text-stroke-width: 1px;
+}
+
+#grey {
+  -webkit-text-stroke-color: rgb(41, 41, 41);
+  color: gray;
+  -webkit-text-stroke-width: 1px;
+}
+
+#green {
+  -webkit-text-stroke-color: rgb(15, 202, 15);
+  -webkit-text-stroke-width: 1px;
+}
+
+#white {
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+  color: white;
+  -webkit-text-stroke-width: 1px;
+}
+
+#black {
+  -webkit-text-stroke-color: black;
+  color: black;
+  -webkit-text-stroke-width: 1px;
+}
+
+.color-choice {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.one-color {
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-right: 13px;
+  margin-bottom: 5px;
 }
 </style>

@@ -5,7 +5,7 @@
     </div>
     <div class="card-info">
       <h2>{{ name }}</h2>
-      <p>Размеры: {{ size_eu }}</p>
+      <p>Размеры: {{ size_eu.map(el => el) }}</p>
       <p>Цвета: {{ color }}</p>
       <a :href="link">Подробнее</a>
     </div>

@@ -14,7 +14,17 @@
 
       <div class="leg">
         <form @submit.prevent>
-          <label for="leg">Введите длину ноги</label>
+          <div class="quest_box">
+            <label for="leg">Введите длину стопы</label>
+            <button @click="openModel">
+              <img class="question" src="../assets/question.png" alt="question">
+            </button>
+            <div class="modal-open-sex">
+              <ModalDialog v-show="model" @hide-model="hideModal">В разработке...</ModalDialog>
+            </div>
+
+
+          </div>
           <input :value="foot" @input="inputFoot" class="input" type="text" placeholder="Длина ноги в сантиметрах">
         </form>
       </div>
@@ -65,6 +75,10 @@
           <label id="green">Зеленый</label>
           <input :value="colors" @input="inputGREEN" class="radio-button" type="checkbox" name="green">
         </div>
+        <div class="one-color">
+          <label id="rainbow">Нестандартный</label>
+          <input :value="colors" @input="inputSTRANGE" class="radio-button" type="checkbox" name="rainbow">
+        </div>
       </div>
     </div>
 
@@ -73,7 +87,7 @@
       <span></span>
       <span></span>
       <span></span>
-      <button class="button" type="submit" @click="calculate">Рассчитать</button>
+      <button class="button_calc" type="submit" @click="calculate">Рассчитать</button>
     </div>
 
     <div v-if="this.ru_result > 0" class="result" id="result">
@@ -87,7 +101,7 @@
 
 
       <div class="many-cards">
-        <ManyCard />
+        <ManyCard :size_eu="Number(this.eu_result)" :colors="this.colors" />
       </div>
 
 
@@ -104,6 +118,9 @@
     <div v-else-if="this.ru_result === undefined" class="result">
       <h2>Похоже, что вы не вписываетесь в стандартные размеры обуви 🤔</h2>
     </div>
+    <div v-else-if="this.colors.length === 0" class="result">
+      <h2>Выберите цвет обуви🌈</h2>
+    </div>
 
 
 
@@ -113,6 +130,7 @@
 </template>
 <script>
 import ManyCard from './ManyCard.vue'
+import ModalDialog from '@/components/UI/ModalDialog.vue'
 
 
 
@@ -125,7 +143,7 @@ const foot_size_USA_man = [6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 
 const foot_size_RU_woman = [35, 35.5, 35 - 36, 36, 36.5, 37, 37.5, 38, 38.5, 39, 39.5, 40, 40.5, 41, 41.5]
 const foot_size_RU_man = [37.5, 38, 39, 39.5, 40, 41, 41.5, 42, 43, 43.5, 44, 44.5, 45, 46, 47]
 
-const foot_size_EU_woman = [35, 35.5, "36(3)", 37, "37.5(4.5)", 38, "38.5(5.5)", "39(6)", "40(6.5)", "40.5(7)", "41(7.5)", "42(8.5)", 42.2]
+const foot_size_EU_woman = [35, 35.5, 36, 37, 37.5, 38, 38.5, 39, 40, 40.5, 41, 42, 42.2]
 const foot_size_EU_man = [38.5, 39, 40, 40.5, 41, 42, 42.5, 43, 44, 44.5, 45, 46, 46.5, 47, 48]
 
 
@@ -140,11 +158,12 @@ export default {
       ru_result: 0,
       eu_result: 0,
       usa_result: 0,
-      colors: []
+      colors: [],
+      model: false,
     }
   },
   name: 'ContentMain',
-  components: { ManyCard },
+  components: { ManyCard, ModalDialog },
   methods: {
     calculate() {
       let foot = this.foot
@@ -238,6 +257,20 @@ export default {
         this.colors.push("green")
       }
     },
+    inputSTRANGE() {
+      if (this.colors.includes("light_green" && "Cactus Jack" && "camouflage")) {
+        this.colors = this.colors.filter(cur => cur !== "light_green" && cur !== "Cactus Jack" && cur !== "camouflage")
+      } else {
+        this.colors.push("light_green", "Cactus Jack", "camouflage")
+      }
+    },
+    openModel() {
+      console.log("писька")
+      this.model = true
+    },
+    hideModal() {
+      this.model = false
+    }
   }
 }
 </script>
@@ -406,7 +439,7 @@ export default {
   top: 90px;
 }
 
-.button {
+.button_calc {
   min-width: 300px;
   min-height: 60px;
   font-family: 'Nunito', sans-serif;
@@ -428,7 +461,7 @@ export default {
   margin-top: 15px;
 }
 
-button::before {
+.button_calc::before {
   content: '';
   border-radius: 1000px;
   min-width: calc(300px + 12px);
@@ -443,18 +476,18 @@ button::before {
   transition: all .3s ease-in-out 0s;
 }
 
-.button:hover,
-.button:focus {
+.button_calc:hover,
+.button_calc:focus {
   color: #313133;
   transform: translateY(-6px);
 }
 
-button:hover::before,
-button:focus::before {
+.button_calc:hover::before,
+.button_calc:focus::before {
   opacity: 1;
 }
 
-button::after {
+.button_calc::after {
   content: '';
   width: 30px;
   height: 30px;
@@ -468,8 +501,8 @@ button::after {
   animation: ring 1.5s infinite;
 }
 
-button:hover::after,
-button:focus::after {
+.button_calc:hover::after,
+.button_calc:focus::after {
   animation: none;
   display: none;
 }
@@ -543,6 +576,14 @@ button:focus::after {
   -webkit-text-stroke-width: 1px;
 }
 
+#rainbow {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgb(255, 179, 0) 17%, rgb(246, 255, 0) 34%, rgb(30, 255, 0) 51%, rgb(5, 198, 219) 68%, rgb(34, 0, 255) 85%, rgb(255, 0, 255) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.6px;
+}
+
 .color-choice {
   display: flex;
   flex-wrap: wrap;
@@ -555,5 +596,26 @@ button:focus::after {
   align-items: center;
   margin-right: 13px;
   margin-bottom: 5px;
+}
+
+.question {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.quest_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.quest_box label {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.modal-open-sex {
+  z-index: 100;
 }
 </style>

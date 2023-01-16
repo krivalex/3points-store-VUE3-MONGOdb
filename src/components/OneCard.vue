@@ -5,8 +5,8 @@
     </div>
     <div class="card-info">
       <h2>{{ name }}</h2>
-      <p>Размеры: {{ size_eu.map(el => el) }}</p>
-      <p>Цвета: {{ color }}</p>
+      <p>Размеры: {{ size_eu.join(",") }}</p>
+      <p>Цвета: {{ colors.join(",") }}</p>
       <a :href="link">Подробнее</a>
     </div>
   </div>
@@ -19,7 +19,7 @@ export default {
     id: Number,
     name: String,
     size_eu: Array,
-    color: Array,
+    colors: Array,
     link: String,
     image: String
   },

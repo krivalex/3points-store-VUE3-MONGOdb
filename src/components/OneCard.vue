@@ -5,7 +5,7 @@
     </div>
     <div class="card-info">
       <p class="name">{{ name }}</p>
-      <p class="size">Размеры: <br /> {{ size_eu.join("|") }}</p>
+      <p class="size">Размеры: <br /> {{ size_eu.join(" • ") }}</p>
       <p class="color">Цвета: {{ colors.join(",") }}</p>
       <a class="link" :href="link">Подробнее</a>
     </div>

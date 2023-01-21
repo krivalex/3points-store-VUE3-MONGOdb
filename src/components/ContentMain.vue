@@ -42,11 +42,15 @@
       <div class="gender">
         <h2 for="man">Пол: </h2>
         <form>
-          <input :value="man" @input="inputMan" class="radio-button" type="radio" name="gender">
-          <label for="man">Мужской</label>
+          <div>
+            <input :value="man" @input="inputMan" class="radio-button" type="radio" name="gender">
+            <label for="man">Мужской</label>
+          </div>
 
-          <input :value="woman" @input="inputWoman" class="radio-button" type="radio" name="gender">
-          <label for="woman">Женский</label>
+          <div>
+            <input :value="woman" @input="inputWoman" class="radio-button" type="radio" name="gender">
+            <label for="woman">Женский</label>
+          </div>
         </form>
       </div>
 
@@ -114,22 +118,28 @@
 
     </div>
     <div v-else-if='this.height === ""' class="result">
+      <h4>Подсказка:</h4>
       <h2>Укажите ваш рост📏</h2>
     </div>
     <div v-else-if='isNaN(this.foot) || this.foot === ""' class="result">
+      <h4>Подсказка:</h4>
       <h2>Укажите размер вашей ноги🦶</h2>
     </div>
     <div v-else-if="this.man === false && this.woman === false" class="result">
-      <h2>Укажите ваш пол 👨/👩</h2>
+      <h4>Подсказка:</h4>
+      <h2>Укажите ваш пол <br /> 👨/👩</h2>
+    </div>
+    <div v-else-if="this.colors.length === 0" class="result">
+      <h4>Подсказка:</h4>
+      <h2>Выберите цвет обуви🌈</h2>
     </div>
     <div v-else-if="this.ru_result === undefined" class="result">
       <h2>Похоже, что вы не вписываетесь в стандартные размеры обуви 🤔</h2>
     </div>
-    <div v-else-if="this.colors.length === 0" class="result">
-      <h2>Выберите цвет обуви🌈</h2>
-    </div>
-    <div v-else class="no-validation">
 
+    <div v-else class="result no-validation">
+      <h4>Подсказка:</h4>
+      <h2>Нажмите на кнопку <b>"Рассчитать"</b>⚙️</h2>
     </div>
 
 
@@ -295,6 +305,8 @@ export default {
   font-size: 20px;
   margin-top: 15px;
   margin-bottom: 40px;
+  padding: 0 15px;
+  text-align: center;
 }
 
 .result strong {
@@ -406,6 +418,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .gender h2 {
@@ -414,8 +427,15 @@ export default {
 
 .gender form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+}
+
+.gender form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 
@@ -426,8 +446,8 @@ export default {
 
 .gender form input {
   margin: 5px;
-  margin-left: 10px;
-  margin-right: 5px;
+  margin-left: 15px;
+  margin-right: 10px;
   transform: scale(2.0);
   opacity: 0.9;
   cursor: pointer;
@@ -438,6 +458,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .ortopedic input {
@@ -544,11 +565,9 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
 }
 
 .color h2 {
-  font-size: 30px;
   margin-bottom: 20px;
 }
 

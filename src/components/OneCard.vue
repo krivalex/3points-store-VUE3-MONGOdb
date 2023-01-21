@@ -1,13 +1,13 @@
 <template>
-  <div class="one-card">
+  <div class="one-card" @click="redirectInsta">
     <div class="card-image">
       <img crossorigin="anonymous" :src="require(`@/assets/photos/${id}.jpg`)" alt="image">
     </div>
     <div class="card-info">
-      <h2>{{ name }}</h2>
-      <p>Размеры: {{ size_eu.join(",") }}</p>
-      <p>Цвета: {{ colors.join(",") }}</p>
-      <a :href="link">Подробнее</a>
+      <p class="name">{{ name }}</p>
+      <p class="size">Размеры: <br /> {{ size_eu.join("|") }}</p>
+      <p class="color">Цвета: {{ colors.join(",") }}</p>
+      <a class="link" :href="link">Подробнее</a>
     </div>
   </div>
 </template>
@@ -23,6 +23,11 @@ export default {
     link: String,
     image: String
   },
+  methods: {
+    redirectInsta() {
+      window.open(this.link, '_blank')
+    }
+  }
 };
 
 </script>
@@ -39,6 +44,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: 0.3s;
+  width: 400px;
 }
 
 .one-card:hover {
@@ -48,7 +54,7 @@ export default {
 
 .card-image {
   width: 100%;
-  height: 50%;
+  height: 90%;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
 }
@@ -69,17 +75,6 @@ export default {
   padding: 10px;
 }
 
-.card-info h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.card-info p {
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-}
 
 .card-info a {
   font-size: 16px;
@@ -88,10 +83,33 @@ export default {
   color: #0460ac;
   text-decoration: none;
   transition: 0.3s;
+  background-color: #fff;
+  border: 1px solid #0460ac;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .card-info a:hover {
   color: #0b80e0;
   transition: 0.3s;
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.name {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
 }
 </style>

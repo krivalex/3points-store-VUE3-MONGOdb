@@ -285,7 +285,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .result {
   display: flex;
   flex-direction: column;
@@ -390,8 +390,8 @@ export default {
 
 .input label {
   font-size: 25px;
-
 }
+
 
 .radios {
   display: flex;
@@ -420,14 +420,14 @@ export default {
 }
 
 .gender form label {
-  margin-right: 15px;
+  margin-right: 10px;
   font-size: 25px;
 }
 
 .gender form input {
   margin: 5px;
-  margin-left: 15px;
-  margin-right: 7px;
+  margin-left: 10px;
+  margin-right: 5px;
   transform: scale(2.0);
   opacity: 0.9;
   cursor: pointer;
@@ -568,26 +568,26 @@ export default {
 
 #red {
   -webkit-text-stroke-color: red;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
   color: white;
 }
 
 #grey {
   -webkit-text-stroke-color: rgb(41, 41, 41);
   color: gray;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
 }
 
 #green {
   -webkit-text-stroke-color: rgb(15, 202, 15);
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
   color: white;
 }
 
 #white {
   -webkit-text-stroke-color: rgb(0, 0, 0);
   color: white;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
 }
 
 #black {
@@ -601,12 +601,14 @@ export default {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-width: 0.5px;
 }
 
 .color-choice {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .one-color {

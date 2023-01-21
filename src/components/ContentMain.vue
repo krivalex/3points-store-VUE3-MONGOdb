@@ -16,11 +16,18 @@
         <form @submit.prevent>
           <div class="quest_box">
             <label for="leg">Введите длину стопы</label>
-            <button @click="openModel">
+            <button class="open-model-button" @click="openModel">
               <img class="question" src="../assets/question.png" alt="question">
             </button>
             <div class="modal-open-sex">
-              <ModalDialog v-show="model" @hide-model="hideModal">В разработке...</ModalDialog>
+              <ModalDialog v-show="model" @hide-model="hideModal">
+                <img class="foot-intersection" src="../assets/foot.jpg" alt="foot-intersection">
+                <h2>Как измерить длину стопы?</h2>
+                <p>1. Стоя на прямой ноге, на полу, на бумаге нарисуйте линию от кончика пальца до кончика пальца.</p>
+                <p>2. Поставьте стопу на линию и нарисуйте линию от кончика пальца до кончика пальца.</p>
+                <p>3. Измерьте расстояние между линиями.</p>
+                <p>4. Введите полученное значение в поле ввода.</p>
+              </ModalDialog>
             </div>
 
 
@@ -120,6 +127,9 @@
     </div>
     <div v-else-if="this.colors.length === 0" class="result">
       <h2>Выберите цвет обуви🌈</h2>
+    </div>
+    <div v-else class="no-validation">
+
     </div>
 
 
@@ -244,10 +254,10 @@ export default {
       }
     },
     inputGREY() {
-      if (this.colors.includes("grey")) {
-        this.colors = this.colors.filter(cur => cur !== "grey")
+      if (this.colors.includes("grey" || "gray" || "silver")) {
+        this.colors = this.colors.filter(cur => cur !== "grey" && cur !== "gray" && cur !== "silver")
       } else {
-        this.colors.push("grey")
+        this.colors.push("grey", "gray", "silver")
       }
     },
     inputGREEN() {
@@ -324,6 +334,14 @@ export default {
   margin: 20px;
   font-size: 30px;
   margin-bottom: 50px;
+}
+
+.input-group form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .input-group input {
@@ -551,6 +569,7 @@ export default {
 #red {
   -webkit-text-stroke-color: red;
   -webkit-text-stroke-width: 1px;
+  color: white;
 }
 
 #grey {
@@ -562,6 +581,7 @@ export default {
 #green {
   -webkit-text-stroke-color: rgb(15, 202, 15);
   -webkit-text-stroke-width: 1px;
+  color: white;
 }
 
 #white {
@@ -617,5 +637,23 @@ export default {
 
 .modal-open-sex {
   z-index: 100;
+}
+
+.no-validation {
+  height: 100px;
+}
+
+.foot-intersection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.open-model-button {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
 }
 </style>

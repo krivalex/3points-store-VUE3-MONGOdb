@@ -30,10 +30,17 @@ export default {
 }
 
 .dialog-client {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  font-size: 18px;
   margin: auto;
   background: white;
   border-radius: 12px;
   min-height: 50px;
   min-height: 300px;
+  max-height: 80vh;
+  max-width: 80vw;
+  padding: 20px;
 }
 </style>

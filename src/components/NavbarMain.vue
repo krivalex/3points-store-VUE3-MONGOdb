@@ -30,8 +30,8 @@ export default {
 }
 
 .navbar h1 {
-  font-size: 2rem;
   font-weight: 700;
+  font-size: 2rem;
   color: #ffffff;
   font-family: "Sacramento", sans-serif;
 }
@@ -109,6 +109,16 @@ h1 {
       0 0 70px #bc13fe,
       0 0 80px #bc13fe;
 
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar h1 {
+    font-size: 3rem;
+  }
+
+  .navbar {
+    height: 200px;
   }
 }
 </style>

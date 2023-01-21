@@ -44,7 +44,8 @@ export default {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: 0.3s;
-  width: 400px;
+  width: 350px;
+
 }
 
 .one-card:hover {
@@ -111,5 +112,20 @@ export default {
   text-align: center;
   font-size: 30px;
   font-weight: 600;
+}
+
+.big-card {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .one-card {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center;
+  }
+
 }
 </style>

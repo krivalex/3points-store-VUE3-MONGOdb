@@ -50,7 +50,7 @@ export default {
   height: 100%;
   padding: 0 10px;
   margin-top: 20px;
-  text-align: centerw;
+  text-align: center;
 
 }
 
@@ -60,10 +60,10 @@ export default {
 
 @media screen and (max-width: 768px) {
   .cards .one-card {
-    min-width: 100%;
+    min-width: 90%;
     height: 500px;
-    max-width: 70%;
     margin: 10px;
+
   }
 }
 
@@ -73,5 +73,7 @@ export default {
     height: 450px;
     margin: 10px;
   }
+
+
 }
 </style>

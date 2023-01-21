@@ -305,7 +305,7 @@ export default {
   font-size: 20px;
   margin-top: 15px;
   margin-bottom: 40px;
-  padding: 0 15px;
+  padding: 0 10px;
   text-align: center;
 }
 
@@ -330,7 +330,9 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
 }
 
 .content-main h1 {
@@ -676,5 +678,18 @@ export default {
   border-radius: 50%;
   height: 30px;
   width: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .leg label {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content-main {
+    border-left: 40px solid black;
+    border-right: 40px solid black;
+  }
 }
 </style>

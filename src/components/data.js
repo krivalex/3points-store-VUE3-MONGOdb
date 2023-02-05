@@ -126,7 +126,7 @@ const snickers_data = [
         "color":  ["black"],
         "link": "https://www.instagram.com/p/Cel0ek8qDBe/?hl=ru",
         "image": "@/assets/photos/16.jpg"
-    }
+    },
 
 ]
 

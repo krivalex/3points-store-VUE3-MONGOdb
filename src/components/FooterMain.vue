@@ -1,7 +1,7 @@
 <template>
   <div class="footer-main">
     <a href="https://instagram.com/3points_kz?igshid=OGQ2MjdiOTE=" target="_blank" class="footer-main__link">
-      <img src="../assets/insta4.png" alt="instagram" class="footer-main__link-img">
+      <img src="../assets/neon.png" alt="instagram" class="footer-main__link-img">
     </a>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 .data {
@@ -47,7 +47,7 @@ export default {
 
 .creator {
   font-size: 12px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   position: fixed;
   bottom: 0;
   right: 0;

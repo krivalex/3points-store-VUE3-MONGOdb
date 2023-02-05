@@ -22,10 +22,11 @@ export default {
   background-color: #f5f5f5;
   height: 100px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
   background-position: center;
   background-color: black;
+  background-image: url("../assets/bandana.jpg");
+  border: 2px solid #000000;
 
 }
 
@@ -34,6 +35,7 @@ export default {
   font-size: 2rem;
   color: #ffffff;
   font-family: "Sacramento", sans-serif;
+  background-color: black;
 }
 
 .name {
@@ -118,7 +120,7 @@ h1 {
   }
 
   .navbar {
-    height: 200px;
+    height: 120px;
   }
 }
 </style>

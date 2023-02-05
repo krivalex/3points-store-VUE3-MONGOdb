@@ -330,9 +330,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #353535;
   border-left: 10px solid black;
   border-right: 10px solid black;
+  color: white;
 }
 
 .content-main h1 {
@@ -367,6 +368,7 @@ export default {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  background-color: rgb(106, 106, 106);
 }
 
 
@@ -394,6 +396,8 @@ export default {
   padding: 12px 20px;
   margin: 4px 0;
   box-sizing: border-box;
+  background-color: rgb(106, 106, 106);
+  color: white;
 }
 
 .input:focus {
@@ -413,6 +417,7 @@ export default {
   justify-content: center;
   width: 50vw;
   margin: 20px;
+
 }
 
 .gender {
@@ -453,6 +458,7 @@ export default {
   transform: scale(2.0);
   opacity: 0.9;
   cursor: pointer;
+  background-color: rgb(106, 106, 106);
 }
 
 .ortopedic {
@@ -588,15 +594,12 @@ export default {
 }
 
 #red {
-  -webkit-text-stroke-color: red;
-  -webkit-text-stroke-width: 0.5px;
-  color: white;
+  color: rgb(255, 0, 0);
 }
 
 #grey {
   -webkit-text-stroke-color: rgb(41, 41, 41);
   color: gray;
-  -webkit-text-stroke-width: 0.5px;
 }
 
 #green {
@@ -606,15 +609,15 @@ export default {
 }
 
 #white {
-  -webkit-text-stroke-color: rgb(0, 0, 0);
-  color: white;
-  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke-width: 0.3px;
 }
 
 #black {
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
   color: black;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
 }
 
 #rainbow {
@@ -622,7 +625,6 @@ export default {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: 0.5px;
 }
 
 .color-choice {
@@ -679,6 +681,40 @@ export default {
   height: 30px;
   width: 30px;
 }
+
+.gender form input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(188, 19, 254, 0.4);
+}
+
+.ortopedic input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: rgb(106, 106, 106, 0.4);
+}
+
+.color input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: rgb(106, 106, 106, 0.4);
+}
+
+
+
 
 @media screen and (max-width: 768px) {
   .leg label {

@@ -682,36 +682,6 @@ export default {
   width: 30px;
 }
 
-.gender form input::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgb(188, 19, 254, 0.4);
-}
-
-.ortopedic input::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  background-color: rgb(106, 106, 106, 0.4);
-}
-
-.color input::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  background-color: rgb(106, 106, 106, 0.4);
-}
 
 
 

@@ -1,24 +1,9 @@
-# almasshop_front
+# 3points-store
 
-## Project setup
-```
-npm install
-```
+Магазин с калькулятором для расчета размера обуви и довольно сложным фильтром.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Все написано без библиотек с нуля - поиск, фильтрация, отрисовка.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+На сайте можно вбить длину своей ноги, желаемые цвета, и  сайт выдаст то что есть в наличие, и подходит по всем фильтрам.
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Данные хранятся в MongoDB - есть админка.
